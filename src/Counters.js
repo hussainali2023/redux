@@ -6,9 +6,9 @@ const Counters = () => {
   const reducer = (state, action) => {
     console.log(action);
     if (action.type === "INCREMENT") {
-      return state + 1;
+      return state + action.payload.count;
     } else if (action.type === "DECREMENT") {
-      return state - 1;
+      return state - action.payload.count;
     }
   };
 
@@ -19,14 +19,14 @@ const Counters = () => {
       {/* <form action=""> */}
       <div className=" justify-center text-5xl flex">
         <button
-          onClick={() => dispatch({ type: "DECREMENT" })}
+          onClick={() => dispatch({ type: "DECREMENT", payload: { count: 5 } })}
           className=" mr-8 bg-orange-300 px-8 py-2 rounded-xl"
         >
           -
         </button>
         <p>{state}</p>
         <button
-          onClick={() => dispatch({ type: "INCREMENT" })}
+          onClick={() => dispatch({ type: "INCREMENT", payload: { count: 5 } })}
           className=" ml-8 bg-orange-300 px-8 py-2 rounded-xl"
         >
           +
